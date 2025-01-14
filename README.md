@@ -125,11 +125,14 @@ Once minted, the NFT can be viewed on marketplaces such as OpenSea:
 
 [OpenSea - NFTScinions collection](https://testnets.opensea.io/collection/nftscinions).
 
-### Improvements/Suggestions/Commentaries
+### Improvements & Suggestions
 
 - **Metadata Flexibility**:  
   This implementation uses the Pinata IPFS service to host JSON metadata and NFT images. The base URI approach appends incremental token IDs to mint consecutive NFTs (e.g., `char1`, `char2`, etc.). However, this setup is rigid as it does not allow metadata URIs to be updated after deployment.  
   While simple, a more flexible implementation could permit metadata URI updates. However, this could compromise the trustless nature of the system, as changing metadata might break users' trust.
+
+- **Character Levels**:  
+  This implementation registers levels for each NFT. These levels won't be visible on marketplaces but are stored on-chain. This approach ensures simplicity and immutability for the metadata uploaded to IPFS. Despite its simplicity, this is sufficient for in-game level functionality.
 
 - **Dynamic Traits for Marketplaces**:  
   To add levels or other attributes directly to the metadata and display them dynamically on marketplaces (e.g., OpenSea), more complex setups could be explored. For more details, see OpenSea's documentation on [Dynamic Traits](https://docs.opensea.io/docs/dynamic-traits).
