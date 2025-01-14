@@ -74,17 +74,23 @@ $ forge test
 
 1. Set your `.env` file with the following variables:
 
-```env
-PRIVATE_KEY=<your_private_key>
-RPC_URL=<your_rpc_url>
+   ```env
+   PRIVATE_KEY=<your_private_key>
+   RPC_URL=<your_rpc_url>
 
-```
+   ```
+
+   **Note:**  
+   There's a .env.example to be adapted with your own keys.
+
+   **Security Note:**  
+   Never hardcode or share your private key and RPC URL. Use `.env` files to keep sensitive information secure.
 
 2. Deploy the contract using the deployment script:
 
-```shell
-forge script script/DeployNFTScinions.s.sol --rpc-url $RPC_URL --private-key $PRIVATE_KEY --broadcast
-```
+   ```shell
+   forge script script/DeployNFTScinions.s.sol --rpc-url $RPC_URL --private-key $PRIVATE_KEY --broadcast
+   ```
 
 3. Verify the deployment output for the deployed contract address.
 
@@ -134,8 +140,18 @@ Once minted, the NFT can be viewed on marketplaces such as OpenSea:
 - **Character Levels**:  
   This implementation registers levels for each NFT. These levels won't be visible on marketplaces but are stored on-chain. This approach ensures simplicity and immutability for the metadata uploaded to IPFS. Despite its simplicity, this is sufficient for in-game level functionality.
 
+- **Dynamic vs. Static Metadata**:
+
+  - Static metadata (like this implementation) ensures immutability and decentralization but doesn't support updates.
+  - Dynamic metadata can reflect on-chain changes (like level-ups) but requires a centralized backend, which could reduce trustlessness.
+
 - **Dynamic Traits for Marketplaces**:  
   To add levels or other attributes directly to the metadata and display them dynamically on marketplaces (e.g., OpenSea), more complex setups could be explored. For more details, see OpenSea's documentation on [Dynamic Traits](https://docs.opensea.io/docs/dynamic-traits).
 
 - **Exploring ERC-6551 (Token-Bound Accounts)**:  
   A more advanced system could leverage Token-Bound Accounts (EIP-6551). This standard enables each NFT to act as its own wallet, opening up possibilities for decentralized game logic and composability. Learn more: [Ethereum ERC-6551](https://eips.ethereum.org/EIPS/eip-6551)
+
+### GitHub Repository
+
+You can find the complete source code here:  
+[https://github.com/banasa44/NFT_Scinions](https://github.com/banasa44/NFT_Scinions)
